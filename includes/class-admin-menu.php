@@ -26,7 +26,7 @@
     }
 
     function registrar_page() {
-       echo 'I love you saney';
+       include_once ( __DIR__ ). '/class-registrar-form-template.php';
     }
  }
 
