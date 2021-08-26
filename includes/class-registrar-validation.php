@@ -9,51 +9,45 @@
 
  class RegistrarValidation {
 
-    public $reg_errors;
+    public $is_error = false;
 
-    // // Methods
+    // Methods
     function __construct( $fname='', $lname='', $email='', $password='' ) {  
         
         // Check if required fields are empty.
         if( empty( $fname ) || empty( $lname ) || empty( $email )  || empty( $password ) ) {
-            add_filter( 'registrar_errors', function(){
+            add_filter( 'registrar_errors', function() {
                 return 'Required form field is missing.';
             } );
+            $this->is_error = true;
         }
 
         // Check if email already exists.
-    //     if ( email_exists( $email ) ) {
-    //         $this->reg_errors->add( 'username_exists', 'Sorry, that email already exists!' );
-    //     }
+        if ( email_exists( $email ) ) {
+            add_filter( 'registrar_errors', function() {
+                return 'Email already exists.';
+            } );
+            $this->is_error = true;
+        }
 
-    //     // Check if email is valid.
-    //     if ( ! is_email( $email ) ) {
-    //         $this->reg_errors->add( 'email_invalid', 'Invalid email address.' );
-    //     }
+        // Check if email is valid.
+        if ( ! is_email( $email ) ) {
+            add_filter( 'registrar_errors', function() {
+                return 'Invalid email address.';
+            } );
+            $this->is_error = true;
+        }
 
-    //     // Check if password length is not less than 6 characters.
-    //     if ( 6 > strlen( $password ) ) {
-    //         $this->reg_errors->add( 'password_length', 'Password length must be greater than 6.' );
-    //     }
+        // Check if password length is not less than 6 characters.
+        if ( 6 > strlen( $password ) ) {
+            add_filter( 'registrar_errors', function() {
+                return 'Password length must be more than 6 characters.';
+            } );
+            $this->is_error = true;
+        }
 
-    //     $this->show_errors();
-
-    // }
-
-    // // Show errors if exists.
-    // function show_errors() {
-    //     if ( is_wp_error($this->reg_errors) ) {
-    //         foreach ( $this->reg_errors->get_error_message() as $error ) {
-    //             echo '
-    //                 <div>
-    //                     <strong>ERROR</strong>
-    //                     '.$error.'<br>
-    //                 </div>
-    //             ';
-    //         }
-    //     }
     }
-
+    
  }
 
 
