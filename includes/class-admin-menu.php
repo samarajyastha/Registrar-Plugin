@@ -39,7 +39,7 @@
 
     // Main menu callback function
     function registrar_page() {
-
+      print_r(get_user_meta(3,'description', true));
     }
 
     // Sub-menu callback function
