@@ -11,8 +11,8 @@
     // Methods
     function __construct() {
         // Load CSS
-        wp_enqueue_style('bootstrap', plugin_dir_url(__FILE__). '../assets/css/bootstrap.min.css', [], 1.0);
-        wp_enqueue_style('style', plugin_dir_url(__FILE__). '../assets/css/style.css', [], 1.0);
+        wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__). '../assets/css/bootstrap.min.css', [], 1.0 );
+        wp_enqueue_style( 'style', plugin_dir_url(__FILE__). '../assets/css/style.css', [], 1.0 );
     
         // Invoke form_template()
         $this->form_template();
@@ -46,7 +46,15 @@
 
                     <div class="col-12">
                         <label for="rating" class="form-label">Rating</label>
-                        <input type="range" class="form-range" min="0" max="5" step="1" id="rating" name="rating">
+                        <input type="range" class="form-range" min="0" max="5" step="1" id="rating" name="rating" value="0">
+                        <div class="rating-value">
+                            <span>0</span>
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                        </div>
                     </div>
 
                     <div class="col-12">
@@ -55,7 +63,7 @@
                     </div>
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Sign in</button>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
                 </form>
             </div>
