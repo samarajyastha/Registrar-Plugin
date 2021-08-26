@@ -12,7 +12,7 @@
     public $is_error = false;
 
     // Methods
-    function __construct( $fname='', $lname='', $email='', $password='' ) {  
+    function __construct( $fname='', $lname='', $email='', $password='', $rating=0, $review='' ) {  
         
         // Check if required fields are empty.
         if( empty( $fname ) || empty( $lname ) || empty( $email )  || empty( $password ) ) {
