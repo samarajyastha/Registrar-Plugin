@@ -13,7 +13,7 @@
     and use the above filter to achieve this functionality and then only after that insert 
     the user data in the database.
 	
-- [x] When the user is successfully registered create a custom action hook and 
+- [ ] When the user is successfully registered create a custom action hook and 
     create a functionality which utilizes this action hook to send a successfully 
     registered email to the registered user.
 
@@ -25,20 +25,20 @@
 - [x]  Each review card or grid of a user must display his Full Name, Email, review rating 
     and review description as recorded by your form.
 
-- [x] After all the reviews have been listed, Place a filter at the top which can filter 
+- [ ] After all the reviews have been listed, Place a filter at the top which can filter 
     out users reviews based on 1 to 5 ratings and another latest filter to render the reviews 
     list according to user registered date.
 	
-- [x] The page must use pagination to render only 5 reviews at a time.
+- [ ] The page must use pagination to render only 5 reviews at a time.
 
 - [x] The list must be visible only to the logged in user. A guest user 
     ( not logged in user ) will see either a blank page or a message that he's not authorized 
     to see the content (either is good). 
 
-- [x] The review and latest filter must both work via AJAX, and pagination should work via 
+- [ ] The review and latest filter must both work via AJAX, and pagination should work via 
     AJAX as well. 
 	
-- [x]If any of the review filter lets say rating 2 has not been given by any user then a message 
+- [ ] If any of the review filter lets say rating 2 has not been given by any user then a message 
     must be shown in the Page.
 
 - [x]   The plugin must be translation-ready, properly sanitized, nonces must be checked and 
