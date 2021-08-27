@@ -23,3 +23,14 @@
 .rating-value span {
     color: #6c757d;
 }
+
+.card {
+  margin: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 5%);
+}
+
+.card-body{
+  padding: 30px;
+}

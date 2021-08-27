@@ -39,17 +39,16 @@
 
     // Main menu callback function
     function registrar_page() {
-        echo esc_html(get_user_meta(14, 'first_name')[0]);
+        if( class_exists( 'RegistrarUsers' ) ) {
+            new RegistrarUsers();
+        }
     }
 
     // Sub-menu callback function
     function registrar_form_template() {
-        include_once ( __DIR__ ). '/class-registrar-form-template.php';
+        if( class_exists( 'RegistrarFormTemplate' ) ) {
+            new RegistrarFormTemplate();
+        }
     }
+    
  }
-
- if( class_exists( 'RegistrarAdminMenu' ) ) {
-     $registrarAdminMenu = new RegistrarAdminMenu();
- }
-
- add_action( 'admin_menu', array( $registrarAdminMenu, 'create_admin_menu' ) );

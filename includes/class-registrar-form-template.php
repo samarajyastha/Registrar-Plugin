@@ -6,20 +6,13 @@
  * @since 1.0.0
  */
 
- include_once 'class-registrar-validation.php';
- include_once 'class-registrar-submit-form.php';
-
  class RegistrarFormTemplate {
 
     // Methods
     function __construct() {
 
-        // Load CSS
-        wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__). '../assets/css/bootstrap.min.css', [], 1.0 );
-        wp_enqueue_style( 'style', plugin_dir_url(__FILE__). '../assets/css/style.css', [], 1.0 );
-    
         // Invoke form_template()
-        $this->form_template();       
+        $this->form_template();      
 
     }
 
@@ -43,6 +36,7 @@
                 new RegistrarSubmitForm( $first_name, $last_name, $email, $password, $review );
 
             }
+
         }
         ?>
 
@@ -90,7 +84,7 @@
 
                 <div class="col-12">
                     <label for="review" class="form-label">Review</label>
-                    <textarea class="form-control" id="review" rows="3" name="review" value="'. ( isset( $_POST['review']) ? $_POST['review'] : null ) .'"></textarea>
+                    <textarea class="form-control" id="review" rows="3" name="review" >'. ( isset( $_POST['review']) ? $_POST['review'] : null ) .'</textarea>
                 </div>
 
                 <div class="col-12">
@@ -102,8 +96,5 @@
         </div>
         <?php
     }
- }
-
- if( class_exists( 'RegistrarFormTemplate' ) ) {
-     $registrarFormTemplate = new RegistrarFormTemplate();
+    
  }

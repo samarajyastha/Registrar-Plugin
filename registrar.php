@@ -34,11 +34,26 @@
  // Exit if accessed directly.
 defined( 'ABSPATH' ) or die( 'You cannot access this file.' );
 
+// Include classes
+include_once ( __DIR__ ). '/includes/class-registrar-admin-menu.php';
+include_once ( __DIR__ ). '/includes/class-registrar-form-template.php';
+include_once ( __DIR__ ). '/includes/class-registrar-submit-form.php';
+include_once ( __DIR__ ). '/includes/class-registrar-users.php';
+include_once ( __DIR__ ). '/includes/class-registrar-validation.php';
+
 class Registrar {
 
     // Methods
     function __construct() {
-        include_once dirname( __FILE__ ) . '/includes/class-admin-menu.php';
+
+        // Load CSS
+        wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__). '/assets/css/bootstrap.min.css', [], 1.0 );
+        wp_enqueue_style( 'style', plugin_dir_url(__FILE__). '/assets/css/style.css', [], 1.0 ); 
+
+        if( class_exists( 'RegistrarAdminMenu' ) ) {
+            $registrarAdminMenu = new RegistrarAdminMenu();
+            add_action( 'admin_menu', array( $registrarAdminMenu, 'create_admin_menu' ) );
+        }
     }
 
     function activate() {
@@ -54,10 +69,11 @@ class Registrar {
     function uninstall() {
         // Will add something in the future.
     }
+    
 }
 
 if( class_exists( 'Registrar' ) ) {
-    $registrar = new Registrar();
+   $registrar = new Registrar();
 }
 
 // Plugin activation
@@ -68,3 +84,4 @@ register_deactivation_hook( __FILE__, array( $registrar, 'deactivate' ) );
 
 // Uninstall Plugin
 register_uninstall_hook( __FILE__, array( $registrar, 'uninstall' ) );
+

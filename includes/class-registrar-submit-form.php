@@ -31,9 +31,10 @@
             // Adding rating as a custom user meta
            add_user_meta( $user_id, 'rating', $_POST['rating'], false );
         }
-        print_r($userdata);
         
-        // wp_insert_user( $userdata );
+        // Insert data to wp_users table
+        wp_insert_user( $userdata );
         
     }
- }?>
+    
+ }
