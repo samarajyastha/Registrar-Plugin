@@ -32,7 +32,6 @@
            add_user_meta( $user_id, 'rating', $_POST['rating'], false );
         }
         
-        // Insert data to wp_users table
         wp_insert_user( $userdata );
         
     }
