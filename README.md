@@ -48,5 +48,7 @@
 
 *   PHP version: please assume the version officially supported by WordPress or make a version check. 
 	
-
+- [ ] Mercury
+- [x] Venus
+- [x] Earth (Orbit/Moon)
 
