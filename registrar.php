@@ -37,6 +37,7 @@ defined( 'ABSPATH' ) or die( 'You cannot access this file.' );
 // Include classes
 include_once ( __DIR__ ). '/includes/class-registrar-admin-menu.php';
 include_once ( __DIR__ ). '/includes/class-registrar-form-template.php';
+include_once ( __DIR__ ). '/includes/class-registrar-send-email.php';
 include_once ( __DIR__ ). '/includes/class-registrar-submit-form.php';
 include_once ( __DIR__ ). '/includes/class-registrar-users.php';
 include_once ( __DIR__ ). '/includes/class-registrar-validation.php';
@@ -84,4 +85,3 @@ register_deactivation_hook( __FILE__, array( $registrar, 'deactivate' ) );
 
 // Uninstall Plugin
 register_uninstall_hook( __FILE__, array( $registrar, 'uninstall' ) );
-
