@@ -6,7 +6,7 @@
     review field ( can be a simple number field where user can insert review out of 5, remember 
     to use max and min attributes of number field or you can create a range slider out of it, 
     you are free to use any js libraries to create range field interface if you decide to create 
-    a range slider but range slider field is not mandatory ).
+    a range slider but range slider field is not mandatory ). @copy;
 	
 *   When a user submits the form, create a custom filter hook  where the user data is sent, 
     and create a functionality where the username field is extracted from email of the user 
