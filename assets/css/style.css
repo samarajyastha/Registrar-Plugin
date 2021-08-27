@@ -29,8 +29,30 @@
   border: none;
   border-radius: 5px;
   box-shadow: 0 10px 30px rgb(0 0 0 / 5%);
+  min-height: 250px;
 }
 
 .card-body{
   padding: 30px;
+}
+
+.card-body h3{
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.card-body h6 {
+  color: #2f77b3;
+}
+.card-body h6:hover {
+  text-decoration: underline;
+}
+.card-body .reviews {
+  position: absolute;
+  bottom: 30px;
+  margin-top: 10px;
+}
+
+.card-body .reviews i{
+  color: goldenrod;
 }
