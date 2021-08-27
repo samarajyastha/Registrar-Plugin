@@ -1,7 +1,7 @@
 # Registrar-Plugin
 
 
-*   Create a user registration form having fields like User Email, Password, First name, 
+- [x]  Create a user registration form having fields like User Email, Password, First name, 
     Last name, review text area field Where user can enter what they like about our products and a
     review field ( can be a simple number field where user can insert review out of 5, remember 
     to use max and min attributes of number field or you can create a range slider out of it, 
@@ -47,8 +47,4 @@
 *   Please give the table a basic styling for desktop view. No need to make it responsive. 
 
 *   PHP version: please assume the version officially supported by WordPress or make a version check. 
-	
-- [ ] Mercury
-- [x] Venus
-- [x] Earth (Orbit/Moon)
 
