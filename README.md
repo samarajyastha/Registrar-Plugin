@@ -25,7 +25,7 @@
 - [x]  Each review card or grid of a user must display his Full Name, Email, review rating 
     and review description as recorded by your form.
 
-- [ ] After all the reviews have been listed, Place a filter at the top which can filter 
+- [x] After all the reviews have been listed, Place a filter at the top which can filter 
     out users reviews based on 1 to 5 ratings and another latest filter to render the reviews 
     list according to user registered date.
 	
