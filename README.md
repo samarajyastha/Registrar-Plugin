@@ -13,7 +13,7 @@
     and use the above filter to achieve this functionality and then only after that insert 
     the user data in the database.
 	
-- [ ] When the user is successfully registered create a custom action hook and 
+- [x] When the user is successfully registered create a custom action hook and 
     create a functionality which utilizes this action hook to send a successfully 
     registered email to the registered user.
 
