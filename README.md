@@ -38,7 +38,7 @@
 - [ ] The review and latest filter must both work via AJAX, and pagination should work via 
     AJAX as well. 
 	
-- [ ] If any of the review filter lets say rating 2 has not been given by any user then a message 
+- [x] If any of the review filter lets say rating 2 has not been given by any user then a message 
     must be shown in the Page.
 
 - [x]   The plugin must be translation-ready, properly sanitized, nonces must be checked and 
