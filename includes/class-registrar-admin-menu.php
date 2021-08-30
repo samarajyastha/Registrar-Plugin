@@ -43,35 +43,41 @@
             if( is_user_logged_in() ) {
                 new RegistrarUsers();
             } else {
-                echo '
-                    <div class="row">
-                    <div class="col-6 card p-5">
-                    <h6 class="my-3">You are not authorized to view this page. Please login to continue.</h6>
-                ';
+                if( isset( $_GET['register'] ) && $_GET['register'] == true ) {
+                    $this->registrar_form_template();
+                } else {
+                    echo '
+                        <div class="row">
+                        <div class="col-6 card p-5">
+                        <h6 class="my-3">You are not authorized to view this page. Please login to continue.</h6>
+                    ';
 
-                wp_login_form( array(
-                    'echo'           => true,
-                    // Default 'redirect' value takes the user back to the request URI.
-                    'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
-                    'form_id'        => 'loginform',
-                    'label_username' => __( 'Username or Email Address' ),
-                    'label_password' => __( 'Password' ),
-                    'label_remember' => __( 'Remember Me' ),
-                    'label_log_in'   => __( 'Log In' ),
-                    'id_username'    => 'user_login',
-                    'id_password'    => 'user_pass',
-                    'id_remember'    => 'rememberme',
-                    'id_submit'      => 'wp-submit',
-                    'remember'       => true,
-                    'value_username' => '',
-                    // Set 'value_remember' to true to default the "Remember me" checkbox to checked.
-                    'value_remember' => false,
-                ) );
+                    wp_login_form( array(
+                        'echo'           => true,
+                        // Default 'redirect' value takes the user back to the request URI.
+                        'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+                        'form_id'        => 'loginform',
+                        'label_username' => __( 'Username or Email Address' ),
+                        'label_password' => __( 'Password' ),
+                        'label_remember' => __( 'Remember Me' ),
+                        'label_log_in'   => __( 'Log In' ),
+                        'id_username'    => 'user_login',
+                        'id_password'    => 'user_pass',
+                        'id_remember'    => 'rememberme',
+                        'id_submit'      => 'wp-submit',
+                        'remember'       => true,
+                        'value_username' => '',
+                        // Set 'value_remember' to true to default the "Remember me" checkbox to checked.
+                        'value_remember' => false,
+                    ) );
 
-                echo '
+                    echo 'Or register to continue. <a href="?register=true">Register</a>';
+                    
+                    echo '
                         </div>
                     </div>
-                ';
+                    ';
+                }
             }
         }
     }

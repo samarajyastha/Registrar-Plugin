@@ -59,6 +59,13 @@ class Registrar {
             $registrarAdminMenu = new RegistrarAdminMenu();
             add_action( 'admin_menu', array( $registrarAdminMenu, 'create_admin_menu' ) );
         }
+
+        // registrar page shortcode
+        add_shortcode( 'registrar-page', function() {
+            $registrar_page = new RegistrarAdminMenu;
+            return $registrar_page->registrar_page();
+        } );
+        
     }
 
     function activate() {
@@ -77,6 +84,7 @@ class Registrar {
     
 }
 
+
 if( class_exists( 'Registrar' ) ) {
    $registrar = new Registrar();
 }
@@ -89,3 +97,5 @@ register_deactivation_hook( __FILE__, array( $registrar, 'deactivate' ) );
 
 // Uninstall Plugin
 register_uninstall_hook( __FILE__, array( $registrar, 'uninstall' ) );
+
+

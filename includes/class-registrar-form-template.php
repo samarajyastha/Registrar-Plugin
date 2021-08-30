@@ -40,7 +40,7 @@
         ?>
 
         <div class="registrar-container">
-            <form class="row g-3 registrar-form" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
+            <form class="row g-3 registrar-form <?php if( !is_page() && !is_archive() ) echo 'w-50'; ?>" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST">
                 <h2>Registrar Form</h2>
         <?php
             // Create nonce
@@ -90,7 +90,11 @@
                     <button type="submit" class="btn btn-primary">Register</button>
                 </div>
             ';
+            if ( is_page() || is_archive() ){
+                echo '<p>If you are already registered, Please '.'<a href="?">Login</a><p>';
+            }
             ?>
+            
             </form>
         </div>
         <?php
