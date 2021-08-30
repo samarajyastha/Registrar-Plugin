@@ -63,3 +63,8 @@
   margin: 20px auto;
   box-shadow: 0px 2px 5px 0px #dadada;
 }
+
+.dropdown-toggle {
+  float: right;
+  margin-right: 10px;
+}

@@ -48,11 +48,12 @@ class Registrar {
     function __construct() {
 
         // Load CSS
-        wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__). '/assets/css/bootstrap.min.css', [], 1.0 );
-        wp_enqueue_style( 'style', plugin_dir_url(__FILE__). '/assets/css/style.css', [], 1.0 ); 
+        wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__). 'assets/css/bootstrap.min.css', [], 1.0 );
+        wp_enqueue_style( 'style', plugin_dir_url(__FILE__). 'assets/css/style.css', [], 1.0 ); 
 
         // Load JS
-        wp_enqueue_script( 'main', plugin_dir_url(__FILE__). '/assets/js/main.js', [], 1.0, true );
+        wp_enqueue_script( 'bootstrap-bundle', plugin_dir_url(__FILE__). 'assets/js/bootstrap.bundle.min.js', [], 1.0, true );
+        wp_enqueue_script( 'main', plugin_dir_url(__FILE__). 'assets/js/main.js', [], 1.0, true );
         
         if( class_exists( 'RegistrarAdminMenu' ) ) {
             $registrarAdminMenu = new RegistrarAdminMenu();

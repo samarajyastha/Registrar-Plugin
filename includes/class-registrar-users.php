@@ -7,33 +7,47 @@
  * @since 1.0.0
  */
 
-class RegistrarUsers
-{
+class RegistrarUsers {
    // Methods
-   function __construct()
-   {
+   function __construct() {
       $this->users_template();
    }
 
    // Show all users in a card.
-   function users_template()
-   {
-?>
+   function users_template() {
+   ?>
       <div class="registrar-container">
          <div class="row">
+            <div class="dropdown">
+               <button class="btn btn-light dropdown-toggle" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sort By
+               </button>
+               <ul class="dropdown-menu" aria-labelledby="sort-button">
+                  <li><a class="dropdown-item" href="?sort=ID">ID</a></li>
+                  <li><a class="dropdown-item" href="?sort=display_name">Name</a></li>
+                  <li><a class="dropdown-item" href="?sort=meta_value&meta_key=rating">Rating</a></li>
+               </ul>
+            </div>
             <?php $this->users_grid(); ?>
-
          </div>
       </div>
       <?php
    }
 
    // Single user card with name, email, reviews and rating.
-   function users_grid()
-   {
+   function users_grid() {
 
+      $sort = isset($_GET['sort'])?$_GET['sort']:'display_name';
+
+      $args = array (
+         'meta_key'  => 'rating',
+         'orderby'   => $sort,
+         'order'     => 'ASC',
+      );
+      
       // Get all users from wp_users() table.
-      $users = get_users();
+      $userList = new WP_User_Query( $args );
+      $users = $userList->get_results();
 
       foreach ($users as $user) {
       ?>
