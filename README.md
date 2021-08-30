@@ -13,7 +13,7 @@
     and use the above filter to achieve this functionality and then only after that insert 
     the user data in the database.
 	
-- [ ] When the user is successfully registered create a custom action hook and 
+- [x] When the user is successfully registered create a custom action hook and 
     create a functionality which utilizes this action hook to send a successfully 
     registered email to the registered user.
 
@@ -38,7 +38,7 @@
 - [ ] The review and latest filter must both work via AJAX, and pagination should work via 
     AJAX as well. 
 	
-- [ ] If any of the review filter lets say rating 2 has not been given by any user then a message 
+- [x] If any of the review filter lets say rating 2 has not been given by any user then a message 
     must be shown in the Page.
 
 - [x]   The plugin must be translation-ready, properly sanitized, nonces must be checked and 
