@@ -9,26 +9,14 @@
  class RegistrarSendEmail {
 
     // Methods 
-    function __construct() {
+    function __construct( $mail_to ) {
 
-        add_action( 'plugins_loaded', 'renderHTML' );
-       
-        function renderHTML() {
+        $subject    = 'Registration Successful';
+        $body       = 'Your account '.$mail_to.' has been registered successfully. Thank you!';
+        $headers[]  = 'From: My Name <samarajyastha@gmail.com>' . "\r\n";
+        $headers[]  = '';
+        wp_mail( $mail_to, $subject, $body, $headers );
 
-            $to = 'xtremepapersnepal@gmail.com';
-            $subject = 'The subject';
-            $body = 'The email body content';
-            $headers[] = 'From: My Name <samarajyastha@gmail.com>' . "\r\n";
-            $headers[]='';
-            $mailsent = wp_mail( $to, $subject, $body, $headers );
+    }    
 
-            if( $mailsent ) {
-                echo $to;
-            } else {
-                echo 'error';
-            }
-           
-        }
-    
-    }
- }
+}

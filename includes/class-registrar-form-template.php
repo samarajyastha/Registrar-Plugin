@@ -34,7 +34,6 @@
 
                 // Invoke Registrar Submit form class
                 new RegistrarSubmitForm( $first_name, $last_name, $email, $password, $review );
-
             }
 
         }

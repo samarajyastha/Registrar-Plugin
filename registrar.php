@@ -51,6 +51,9 @@ class Registrar {
         wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__). '/assets/css/bootstrap.min.css', [], 1.0 );
         wp_enqueue_style( 'style', plugin_dir_url(__FILE__). '/assets/css/style.css', [], 1.0 ); 
 
+        // Load JS
+        wp_enqueue_script( 'main', plugin_dir_url(__FILE__). '/assets/js/main.js', [], 1.0, true );
+        
         if( class_exists( 'RegistrarAdminMenu' ) ) {
             $registrarAdminMenu = new RegistrarAdminMenu();
             add_action( 'admin_menu', array( $registrarAdminMenu, 'create_admin_menu' ) );

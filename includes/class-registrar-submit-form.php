@@ -25,15 +25,31 @@
             'description'   =>  $review,
         );
 
-        add_action( 'user_register', 'add_rating', 10, 1 );
+        add_action( 'user_register', array( $this, 'add_rating' ), 10, 1 );
+        
+        wp_insert_user( $userdata ) or die();
 
-        function add_rating($user_id ){
-            // Adding rating as a custom user meta
-           add_user_meta( $user_id, 'rating', $_POST['rating'], false );
-        }
-        
-        wp_insert_user( $userdata );
-        
+        $this->user_registered_modal();
+
+        // Send Email to registered user
+        new RegistrarSendEmail( $email );
+    }
+
+    // Adding rating as a custom user meta
+    function add_rating( $user_id ) {
+       add_user_meta( $user_id, 'rating', $_POST['rating'], false );
+    }
+
+    // Show pop up modal if user register is successful
+    function user_registered_modal() {
+    ?>
+        <div class="registrar-container">
+            <div class="alert alert-success alert-dismissible w-50" role="alert" id="liveAlert">
+                <strong>User Registration Successful!</strong>
+                <button type="button" id="alert-close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php
     }
     
  }
