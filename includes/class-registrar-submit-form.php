@@ -55,12 +55,12 @@
 
             // Close alert box
             alertClose.addEventListener("click", function () {
-            liveAlert.remove();
+                liveAlert.remove();
             });
 
             // Close alert box after 5 seconds
             setTimeout(() => {
-            liveAlert.remove();
+                liveAlert.remove();
             }, 5000);
 
         </script>

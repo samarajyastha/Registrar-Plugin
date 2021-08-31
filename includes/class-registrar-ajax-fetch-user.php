@@ -18,16 +18,18 @@ class AjaxFetchUser {
         $sort = isset( $_POST['sort'] ) ? $_POST['sort'] : 'display_name';
         $paged = $_POST['page'] ;
 
-        $query = new WP_User_Query(array(
+        $query = new WP_User_Query( array(
             'meta_key'  => 'rating',
-            'orderby' => $sort,
-            'order' => 'ASC',
-            'paged' =>  $paged,
-            'number' => 3,
-        ));
+            'orderby'   => $sort,
+            'order'     => 'ASC',
+            'paged'     => $paged,
+            'number'    => 3,
+        ) );
+        
+        // Get all users value.
         $users = $query->get_results();
 
-        foreach ($users as $user) {
+        foreach ( $users as $user ) {
         ?>
             <div class="col-md-4 col-sm-6 col-12">
                 <div class="card">
@@ -37,14 +39,14 @@ class AjaxFetchUser {
                         <a href="mailto:<?php echo $user->user_email; ?>">
                             <h6 class="card-subtitle mb-2"><?php echo $user->user_email; ?></h6>
                         </a>
-                        <p class="card-text"><?php echo get_user_meta($user->ID, 'description')[0] ? get_user_meta($user->ID, 'description')[0] : "No reviews."; ?></p>
+                        <p class="card-text"><?php echo get_user_meta( $user->ID, 'description')[0] ? get_user_meta( $user->ID, 'description' )[0] : "No reviews."; ?></p>
 
                         <div class="reviews">
                             <?php
                             // Users rating
-                            $rating = get_user_meta($user->ID, 'rating');
-                            if (!empty($rating)) {
-                                while ($rating[0] > 0) {
+                            $rating = get_user_meta( $user->ID, 'rating' );
+                            if ( !empty( $rating ) ) {
+                                while ( $rating[0] > 0 ) {
                                     echo ' <i class="dashicons dashicons-star-filled"></i> ';
                                     $rating[0]--;
                                 }
@@ -54,7 +56,7 @@ class AjaxFetchUser {
                     </div>
                 </div>
             </div>
-<?php
+        <?php
         }
         die();
     }

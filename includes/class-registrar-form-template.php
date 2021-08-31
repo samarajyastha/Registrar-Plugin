@@ -23,7 +23,7 @@
             $registrarValidation = new RegistrarValidation( $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['password'], $_POST['rating'], $_POST['review'] );
            
             // Check if error exists
-            if(! $registrarValidation->is_error){
+            if( ! $registrarValidation->is_error ){
 
                 // Sanitize fields before saving
                 $first_name =   sanitize_text_field( $_POST['fname'] );

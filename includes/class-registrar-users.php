@@ -56,7 +56,7 @@ class RegistrarUsers {
       $userList = new WP_User_Query( $args );
       $users = $userList->get_results();
 
-      foreach ($users as $user) {
+      foreach ( $users as $user ) {
       ?>
          <div class="col-md-4 col-sm-6 col-12">
             <div class="card">
@@ -66,14 +66,14 @@ class RegistrarUsers {
                   <a href="mailto:<?php echo $user->user_email; ?>">
                      <h6 class="card-subtitle mb-2"><?php echo $user->user_email; ?></h6>
                   </a>
-                  <p class="card-text"><?php echo get_user_meta($user->ID, 'description')[0] ? get_user_meta($user->ID, 'description')[0] : "No reviews."; ?></p>
+                  <p class="card-text"><?php echo get_user_meta( $user->ID, 'description' )[0] ? get_user_meta( $user->ID, 'description' )[0] : "No reviews."; ?></p>
 
                   <div class="reviews">
                      <?php
                      // Users rating
-                     $rating = get_user_meta($user->ID, 'rating');
-                     if (!empty($rating)) {
-                        while ($rating[0] > 0) {
+                     $rating = get_user_meta( $user->ID, 'rating' );
+                     if ( !empty( $rating ) ) {
+                        while ( $rating[0] > 0 ) {
                            echo ' <i class="dashicons dashicons-star-filled"></i> ';
                            $rating[0]--;
                         }
