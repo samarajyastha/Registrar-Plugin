@@ -41,6 +41,7 @@ include_once ( __DIR__ ). '/includes/class-registrar-send-email.php';
 include_once ( __DIR__ ). '/includes/class-registrar-submit-form.php';
 include_once ( __DIR__ ). '/includes/class-registrar-users.php';
 include_once ( __DIR__ ). '/includes/class-registrar-validation.php';
+include_once ( __DIR__ ). '/includes/class-registrar-ajax-fetch-user.php';
 
 class Registrar {
 
@@ -52,6 +53,7 @@ class Registrar {
         wp_enqueue_style( 'style', plugin_dir_url(__FILE__). 'assets/css/style.css', [], 1.0 ); 
 
         // Load JS
+        wp_enqueue_script( 'registrar-jquery', plugin_dir_url(__FILE__). 'assets/js/jquery.min.js', [], 1.0, true );
         wp_enqueue_script( 'bootstrap-bundle', plugin_dir_url(__FILE__). 'assets/js/bootstrap.bundle.min.js', [], 1.0, true );
         wp_enqueue_script( 'main', plugin_dir_url(__FILE__). 'assets/js/main.js', [], 1.0, true );
         
@@ -65,7 +67,7 @@ class Registrar {
             $registrar_page = new RegistrarAdminMenu;
             return $registrar_page->registrar_page();
         } );
-        
+
     }
 
     function activate() {
@@ -97,5 +99,4 @@ register_deactivation_hook( __FILE__, array( $registrar, 'deactivate' ) );
 
 // Uninstall Plugin
 register_uninstall_hook( __FILE__, array( $registrar, 'uninstall' ) );
-
 

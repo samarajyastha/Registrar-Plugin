@@ -8,6 +8,7 @@
  */
 
 class RegistrarUsers {
+   
    // Methods
    function __construct() {
       $this->users_template();
@@ -23,26 +24,32 @@ class RegistrarUsers {
                   Sort By
                </button>
                <ul class="dropdown-menu" aria-labelledby="sort-button">
-                  <li><a class="dropdown-item" href="?sort=ID">ID</a></li>
-                  <li><a class="dropdown-item" href="?sort=display_name">Name</a></li>
-                  <li><a class="dropdown-item" href="?sort=meta_value&meta_key=rating">Rating</a></li>
+                  <li><a class="dropdown-item" href="?page=registrar&sort=ID">ID</a></li>
+                  <li><a class="dropdown-item" href="?page=registrar&sort=display_name">Name</a></li>
+                  <li><a class="dropdown-item" href="?page=registrar&sort=meta_value">Rating</a></li>
                </ul>
             </div>
-            <?php $this->users_grid(); ?>
+            <div id="load-users" class="row">
+               <!-- Load first three data  -->
+               <?php $this->load_users();?>
+            </div>
+            <a href="#" data-page="2" data-sort="<?php echo isset( $_GET['sort'] ) ? $_GET['sort'] : 'display_name'; ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>" class="btn btn-primary load-btn" >Load More</a>
          </div>
       </div>
       <?php
    }
 
    // Single user card with name, email, reviews and rating.
-   function users_grid() {
+   function load_users() {
 
-      $sort = isset($_GET['sort'])?$_GET['sort']:'display_name';
+      $sort = isset( $_GET['sort'] ) ? $_GET['sort'] : 'display_name';
 
       $args = array (
          'meta_key'  => 'rating',
          'orderby'   => $sort,
          'order'     => 'ASC',
+         'paged'     =>  1,
+         'number'    => 3,
       );
       
       // Get all users from wp_users() table.
@@ -51,7 +58,6 @@ class RegistrarUsers {
 
       foreach ($users as $user) {
       ?>
-
          <div class="col-md-4 col-sm-6 col-12">
             <div class="card">
                <div class="card-body">
@@ -80,3 +86,5 @@ class RegistrarUsers {
       <?php }
    }
 }
+
+// new RegistrarUsers();

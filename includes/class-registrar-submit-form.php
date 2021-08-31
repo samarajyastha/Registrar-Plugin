@@ -49,6 +49,21 @@
                 <button type="button" id="alert-close" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
+        <script>
+            var liveAlert = document.getElementById("liveAlert");
+            var alertClose = document.getElementById("alert-close");
+
+            // Close alert box
+            alertClose.addEventListener("click", function () {
+            liveAlert.remove();
+            });
+
+            // Close alert box after 5 seconds
+            setTimeout(() => {
+            liveAlert.remove();
+            }, 5000);
+
+        </script>
     <?php
     }
     
