@@ -29,13 +29,13 @@
     out users reviews based on 1 to 5 ratings and another latest filter to render the reviews 
     list according to user registered date.
 	
-- [ ] The page must use pagination to render only 5 reviews at a time.
+- [x] The page must use pagination to render only 5 reviews at a time.
 
 - [x] The list must be visible only to the logged in user. A guest user 
     ( not logged in user ) will see either a blank page or a message that he's not authorized 
     to see the content (either is good). 
 
-- [ ] The review and latest filter must both work via AJAX, and pagination should work via 
+- [x] The review and latest filter must both work via AJAX, and pagination should work via 
     AJAX as well. 
 	
 - [x] If any of the review filter lets say rating 2 has not been given by any user then a message 
