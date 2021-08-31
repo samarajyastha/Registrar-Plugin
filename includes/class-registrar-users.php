@@ -17,9 +17,9 @@ class RegistrarUsers {
    // Show all users in a card.
    function users_template() {
    ?>
-      <div class="registrar-container">
+      <div class="container">
          <div class="row">
-            <div class="dropdown">
+            <div class="dropdown col-12">
                <button class="btn btn-light dropdown-toggle" type="button" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
                   Sort By
                </button>
@@ -29,11 +29,15 @@ class RegistrarUsers {
                   <li><a class="dropdown-item" href="?page=registrar&sort=meta_value">Rating</a></li>
                </ul>
             </div>
-            <div id="load-users" class="row">
-               <!-- Load first three data  -->
-               <?php $this->load_users();?>
+            <div class="col-12">
+               <div id="load-users" class="row">
+                  <!-- Load first three data  -->
+                  <?php $this->load_users();?>
+               </div>
             </div>
-            <a href="#" data-page="2" data-sort="<?php echo isset( $_GET['sort'] ) ? $_GET['sort'] : 'display_name'; ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>" class="btn btn-primary load-btn" >Load More</a>
+            <div class="col-12 d-flex justify-content-center mt-5">
+               <a href="#" data-page="2" data-sort="<?php echo isset( $_GET['sort'] ) ? $_GET['sort'] : 'display_name'; ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>" class="btn btn-primary load-btn" >Load More</a>
+            </div>
          </div>
       </div>
       <?php

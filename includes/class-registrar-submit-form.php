@@ -27,12 +27,17 @@
 
         add_action( 'user_register', array( $this, 'add_rating' ), 10, 1 );
         
+        // Insert user in database.
         wp_insert_user( $userdata ) or die();
-
+        
         $this->user_registered_modal();
 
         // Send Email to registered user
         new RegistrarSendEmail( $email );
+    }
+
+    function registrar_login_user(){
+
     }
 
     // Adding rating as a custom user meta

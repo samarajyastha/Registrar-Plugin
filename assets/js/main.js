@@ -1,6 +1,7 @@
 // Ajax functions
 
-$(document).on("click", ".load-btn:not(.loading)", function () {
+$(document).on("click", ".load-btn:not(.loading)", function (e) {
+  
   let loadBtn = $(this);
   let page = loadBtn.data("page");
   let newPage = page + 1;
@@ -8,7 +9,7 @@ $(document).on("click", ".load-btn:not(.loading)", function () {
   let ajaxUrl = loadBtn.data("url");
 
   loadBtn.addClass("loading");
-  loadBtn.html("Loading");
+  loadBtn.html("Loading...");
 
   $.ajax({
     type: "post",
@@ -28,4 +29,6 @@ $(document).on("click", ".load-btn:not(.loading)", function () {
       $("#load-users").append(res);
     },
   });
+
+  e.preventDefault();
 });

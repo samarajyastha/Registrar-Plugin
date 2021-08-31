@@ -29,35 +29,41 @@ class AjaxFetchUser {
         // Get all users value.
         $users = $query->get_results();
 
-        foreach ( $users as $user ) {
-        ?>
-            <div class="col-md-4 col-sm-6 col-12">
-                <div class="card">
-                    <div class="card-body">
+        if( $users ):
+        
+            foreach ( $users as $user ) {
+            ?>
+                <div class="col-md-4 col-sm-6 col-12">
+                    <div class="card">
+                        <div class="card-body">
 
-                        <h3 class="card-title"><?php echo $user->display_name; ?></h3>
-                        <a href="mailto:<?php echo $user->user_email; ?>">
-                            <h6 class="card-subtitle mb-2"><?php echo $user->user_email; ?></h6>
-                        </a>
-                        <p class="card-text"><?php echo get_user_meta( $user->ID, 'description')[0] ? get_user_meta( $user->ID, 'description' )[0] : "No reviews."; ?></p>
+                            <h3 class="card-title"><?php echo $user->display_name; ?></h3>
+                            <a href="mailto:<?php echo $user->user_email; ?>">
+                                <h6 class="card-subtitle mb-2"><?php echo $user->user_email; ?></h6>
+                            </a>
+                            <p class="card-text"><?php echo get_user_meta( $user->ID, 'description')[0] ? get_user_meta( $user->ID, 'description' )[0] : "No reviews."; ?></p>
 
-                        <div class="reviews">
-                            <?php
-                            // Users rating
-                            $rating = get_user_meta( $user->ID, 'rating' );
-                            if ( !empty( $rating ) ) {
-                                while ( $rating[0] > 0 ) {
-                                    echo ' <i class="dashicons dashicons-star-filled"></i> ';
-                                    $rating[0]--;
+                            <div class="reviews">
+                                <?php
+                                // Users rating
+                                $rating = get_user_meta( $user->ID, 'rating' );
+                                if ( !empty( $rating ) ) {
+                                    while ( $rating[0] > 0 ) {
+                                        echo ' <i class="dashicons dashicons-star-filled"></i> ';
+                                        $rating[0]--;
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php
-        }
+            <?php
+            }
+        else :
+            echo '<h4 class="text-center mt-5">No more users.</h4>';
+            echo '<script>$(".load-btn").addClass("d-none");</script>';
+        endif;
         die();
     }
 }
