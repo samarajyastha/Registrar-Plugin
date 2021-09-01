@@ -16,10 +16,11 @@ class AjaxFetchUser {
     function load_users() {
         
         $sort = isset( $_POST['sort'] ) ? $_POST['sort'] : 'display_name';
+        $meta_key = isset( $_POST['meta_key'] ) ? $_POST['meta_key'] : '';
         $paged = $_POST['page'] ;
 
         $query = new WP_User_Query( array(
-            'meta_key'  => 'rating',
+            'meta_key'  => $meta_key,
             'orderby'   => $sort,
             'order'     => 'ASC',
             'paged'     => $paged,

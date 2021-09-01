@@ -26,7 +26,7 @@ class RegistrarUsers {
                <ul class="dropdown-menu" aria-labelledby="sort-button">
                   <li><a class="dropdown-item" href="?page=registrar&sort=ID">ID</a></li>
                   <li><a class="dropdown-item" href="?page=registrar&sort=display_name">Name</a></li>
-                  <li><a class="dropdown-item" href="?page=registrar&sort=meta_value">Rating</a></li>
+                  <li><a class="dropdown-item" href="?page=registrar&meta_key=rating&sort=meta_value">Rating</a></li>
                </ul>
             </div>
             <div class="col-12">
@@ -36,7 +36,7 @@ class RegistrarUsers {
                </div>
             </div>
             <div class="col-12 d-flex justify-content-center mt-5">
-               <a href="#" data-page="2" data-sort="<?php echo isset( $_GET['sort'] ) ? $_GET['sort'] : 'display_name'; ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>" class="btn btn-primary load-btn" >Load More</a>
+               <a href="#" data-page="2" data-meta="<?php echo isset( $_GET['meta_key'] ) ? $_GET['meta_key'] : ''; ?>" data-sort="<?php echo isset( $_GET['sort'] ) ? $_GET['sort'] : 'display_name'; ?>" data-url="<?php echo admin_url('admin-ajax.php'); ?>" class="btn btn-primary load-btn" >Load More</a>
             </div>
          </div>
       </div>
@@ -47,12 +47,13 @@ class RegistrarUsers {
    function load_users() {
 
       $sort = isset( $_GET['sort'] ) ? $_GET['sort'] : 'display_name';
+      $meta_key = isset( $_GET['meta_key'] ) ? $_GET['meta_key'] : '';
 
       $args = array (
-         'meta_key'  => 'rating',
+         'meta_key'  => $meta_key,
          'orderby'   => $sort,
          'order'     => 'ASC',
-         'paged'     =>  1,
+         'paged'     => 1,
          'number'    => 3,
       );
       
@@ -65,13 +66,11 @@ class RegistrarUsers {
          <div class="col-md-4 col-sm-6 col-12">
             <div class="card">
                <div class="card-body">
-
                   <h3 class="card-title"><?php echo $user->display_name; ?></h3>
                   <a href="mailto:<?php echo $user->user_email; ?>">
                      <h6 class="card-subtitle mb-2"><?php echo $user->user_email; ?></h6>
                   </a>
                   <p class="card-text"><?php echo get_user_meta( $user->ID, 'description' )[0] ? get_user_meta( $user->ID, 'description' )[0] : "No reviews."; ?></p>
-
                   <div class="reviews">
                      <?php
                      // Users rating

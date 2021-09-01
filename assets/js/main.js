@@ -1,12 +1,12 @@
 // Ajax functions
 
 $(document).on("click", ".load-btn:not(.loading)", function (e) {
-  
   let loadBtn = $(this);
   let page = loadBtn.data("page");
   let newPage = page + 1;
   let sort = loadBtn.data("sort");
   let ajaxUrl = loadBtn.data("url");
+  let meta_key = loadBtn.data("meta");
 
   loadBtn.addClass("loading");
   loadBtn.html("Loading...");
@@ -17,6 +17,7 @@ $(document).on("click", ".load-btn:not(.loading)", function (e) {
     data: {
       page: page,
       sort: sort,
+      meta_key: meta_key,
       action: "load_more_users",
     },
     error: function (res) {

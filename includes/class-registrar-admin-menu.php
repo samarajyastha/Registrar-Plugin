@@ -34,7 +34,6 @@
             'registrar-form',
             array( $this, 'registrar_form_template' ),
         );
-
     }
 
     // Main menu callback function
@@ -42,7 +41,7 @@
         if( class_exists( 'RegistrarUsers' )  ) {
             if( is_user_logged_in() ) {
                 new RegistrarUsers();
-            } else {
+            } else {             
                 if( isset( $_GET['register'] ) && $_GET['register'] == true ) {
                     $this->registrar_form_template();
                 } else {
